@@ -21,3 +21,11 @@ class DoublyLinkedList:
             self.ultimoNodo = nuevoNodo
 
         self.tamaño += 1
+
+    def siguiente_tarea(self):
+        if self.nodoActual and self.nodoActual.siguiente:
+            self.nodoActual = self.nodoActual.siguiente
+
+    def previous_task(self):
+        if self.nodoActual and self.nodoActual.anterior:
+            self.nodoActual = self.nodoActual.anterior
