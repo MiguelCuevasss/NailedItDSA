@@ -29,3 +29,26 @@ class DoublyLinkedList:
     def previous_task(self):
         if self.nodoActual and self.nodoActual.anterior:
             self.nodoActual = self.nodoActual.anterior
+
+    def eliminarTarea(self, tarea):
+        actual = self.primerNodo
+
+        while actual:
+            if actual.tarea == tarea:
+                if actual.anterior:
+                    actual.anterior.siguiente = actual.siguiente
+                else:
+                    self.primerNodo = actual.siguiente
+
+                if actual.siguiente:
+                    actual.siguiente.anterior = actual.anterior
+                else:
+                    self.ultimoNodo = actual.anterior
+
+                if self.nodoActual == actual:
+                    self.nodoActual = actual.siguiente or actual.anterior
+
+                self.tamaño -= 1
+                return
+
+            actual = actual.siguiente
