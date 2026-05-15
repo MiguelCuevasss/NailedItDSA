@@ -60,3 +60,14 @@ class DoublyLinkedList:
     def completarTarea(self):
         if self.nodoActual:
             self.nodoActual.completado = True
+
+
+    def buscarTarea(self, tarea):
+        actual = self.primerNodo
+
+        while actual:
+            if actual.tarea == tarea:
+                return actual
+            actual = actual.siguiente
+
+        return None
