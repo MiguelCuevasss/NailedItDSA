@@ -24,6 +24,9 @@ class TaskFlow:
         self.labelActual = tk.Label(root, text="Tarea Actual: Ninguna")
         self.labelActual.pack()
 
+        self.botonAnterior = tk.Button(root, text="Tarea Anterior", command=self.anteriorTarea)
+        self.botonAnterior.pack()
+
         self.botonSiguiente = tk.Button(root, text="Siguiente Tarea", command=self.siguienteTarea)
         self.botonSiguiente.pack()
 
@@ -36,7 +39,7 @@ class TaskFlow:
         self.listaTareas.agregarTarea(tarea)
 
         self.actualizarVista()
-        self.actuarTareaActual()
+        self.actualizarTareaActual()
         
 
     def eliminarTarea(self):
@@ -80,9 +83,13 @@ class TaskFlow:
 
     def siguienteTarea(self):
         self.listaTareas.siguiente_tarea()
-        self.actuarTareaActual()
+        self.actualizarTareaActual()
 
-    def actuarTareaActual(self):
+    def anteriorTarea(self):
+        self.listaTareas.tarea_anterior()
+        self.actualizarTareaActual()
+
+    def actualizarTareaActual(self):
         if self.listaTareas.nodoActual:
             
             self.labelActual.config(text=f"Tarea Actual: {self.listaTareas.nodoActual.tarea}")

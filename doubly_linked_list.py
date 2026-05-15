@@ -26,7 +26,7 @@ class DoublyLinkedList:
         if self.nodoActual and self.nodoActual.siguiente:
             self.nodoActual = self.nodoActual.siguiente
 
-    def previous_task(self):
+    def tarea_anterior(self):
         if self.nodoActual and self.nodoActual.anterior:
             self.nodoActual = self.nodoActual.anterior
 
