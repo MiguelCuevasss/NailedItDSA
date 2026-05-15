@@ -103,7 +103,11 @@ class TaskFlow:
         nodoTemporal = self.listaTareas.primerNodo
 
         while nodoTemporal:
-            estado = "(Completada)" if nodoTemporal.completado else "(Pendiente)"
+            if nodoTemporal.completado:
+                estado = "(Completada)"
+
+            else:
+                estado = "(Pendiente)"
 
             self.listaVisual.insert(tk.END, f"{nodoTemporal.tarea} {estado}")
 

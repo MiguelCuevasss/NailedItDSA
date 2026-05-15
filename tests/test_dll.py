@@ -116,7 +116,7 @@ class TestDLL(unittest.TestCase):
 
         lista.primerNodo.completado = True
 
-        self.asertEqual(lista.primerNodo.completado, True)
+        self.assertEqual(lista.primerNodo.completado, True)
 
 
 if __name__ == "__main__":
