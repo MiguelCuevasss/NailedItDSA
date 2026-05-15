@@ -35,7 +35,6 @@ Cada nodo contiene:
 
 ### Representación visual
 
-```text
 A <-> B <-> C
 
 
