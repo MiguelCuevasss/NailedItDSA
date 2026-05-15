@@ -16,6 +16,9 @@ class TaskFlow:
 
         self.botonAgregar.pack()
 
+        self.botonEliminar = tk.Button(root, text="Eliminar Tarea", command=self.eliminarTarea)
+        self.botonEliminar.pack()
+
         self.listaVisual = tk.Listbox(root, width=50)
         self.listaVisual.pack()
 
@@ -25,6 +28,26 @@ class TaskFlow:
         self.listaTareas.agregarTarea(tarea)
 
         self.actualizarVista()
+
+    def eliminarTarea(self):
+
+        seleccion = self.listaVisual.curselection()
+
+        if seleccion:
+
+            indice = seleccion[0]
+            nodoTemporal = self.listaTareas.primerNodo
+            contador = 0
+
+            while nodoTemporal:
+                if contador == indice:
+                    self.listaTareas.eliminarTarea(nodoTemporal.tarea)
+                    break
+
+                nodoTemporal = nodoTemporal.siguiente
+                contador += 1
+
+            self.actualizarVista()
 
     def actualizarVista(self):
         self.listaVisual.delete(0, tk.END)
