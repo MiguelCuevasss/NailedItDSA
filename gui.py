@@ -21,6 +21,12 @@ class TaskFlow:
         self.botonCompletar = tk.Button(root, text="Marcar como Completada", command=self.marcarCompletada)
         self.botonCompletar.pack()
 
+        self.labelActual = tk.Label(root, text="Tarea Actual: Ninguna")
+        self.labelActual.pack()
+
+        self.botonSiguiente = tk.Button(root, text="Siguiente Tarea", command=self.siguienteTarea)
+        self.botonSiguiente.pack()
+
         self.listaVisual = tk.Listbox(root, width=50)
         self.listaVisual.pack()
 
@@ -30,6 +36,8 @@ class TaskFlow:
         self.listaTareas.agregarTarea(tarea)
 
         self.actualizarVista()
+        self.actuarTareaActual()
+        
 
     def eliminarTarea(self):
 
@@ -69,6 +77,18 @@ class TaskFlow:
                 contador += 1
 
             self.actualizarVista()
+
+    def siguienteTarea(self):
+        self.listaTareas.siguiente_tarea()
+        self.actuarTareaActual()
+
+    def actuarTareaActual(self):
+        if self.listaTareas.nodoActual:
+            
+            self.labelActual.config(text=f"Tarea Actual: {self.listaTareas.nodoActual.tarea}")
+        else:
+            self.labelActual.config(text="Tarea Actual: Ninguna")
+
 
     def actualizarVista(self):
         self.listaVisual.delete(0, tk.END)
