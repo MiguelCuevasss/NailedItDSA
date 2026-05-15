@@ -12,7 +12,7 @@ class TaskFlow:
         self.entradaTarea = tk.Entry(root, width=40)
         self.entradaTarea.pack()
 
-        self.botonAgregar = tk.Button(root, text="Agregar Tarea", command=self.agregarTarea())
+        self.botonAgregar = tk.Button(root, text="Agregar Tarea", command=self.agregarTarea)
 
         self.botonAgregar.pack()
 
@@ -32,7 +32,7 @@ class TaskFlow:
         nodoTemporal = self.listaTareas.primerNodo
 
         while nodoTemporal:
-            estado = "(Completada)" if nodoTemporal.completada else "(Pendiente)"
+            estado = "(Completada)" if nodoTemporal.completado else "(Pendiente)"
 
             self.listaVisual.insert(tk.END, f"{nodoTemporal.tarea} {estado}")
 
