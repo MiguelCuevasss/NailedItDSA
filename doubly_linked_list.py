@@ -46,9 +46,17 @@ class DoublyLinkedList:
                     self.ultimoNodo = actual.anterior
 
                 if self.nodoActual == actual:
-                    self.nodoActual = actual.siguiente or actual.anterior
+                    if actual.siguiente:
+                        self.nodoActual = actual.siguiente
+                    else:
+                        self.nodoActual = actual.anterior
 
                 self.tamaño -= 1
                 return
 
             actual = actual.siguiente
+
+
+    def completarTarea(self):
+        if self.nodoActual:
+            self.nodoActual.completado = True
