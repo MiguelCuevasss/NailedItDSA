@@ -13,11 +13,13 @@ class TaskFlow:
         self.entradaTarea.pack()
 
         self.botonAgregar = tk.Button(root, text="Agregar Tarea", command=self.agregarTarea)
-
         self.botonAgregar.pack()
 
         self.botonEliminar = tk.Button(root, text="Eliminar Tarea", command=self.eliminarTarea)
         self.botonEliminar.pack()
+
+        self.botonCompletar = tk.Button(root, text="Marcar como Completada", command=self.marcarCompletada)
+        self.botonCompletar.pack()
 
         self.listaVisual = tk.Listbox(root, width=50)
         self.listaVisual.pack()
@@ -42,6 +44,25 @@ class TaskFlow:
             while nodoTemporal:
                 if contador == indice:
                     self.listaTareas.eliminarTarea(nodoTemporal.tarea)
+                    break
+
+                nodoTemporal = nodoTemporal.siguiente
+                contador += 1
+
+            self.actualizarVista()
+
+    def marcarCompletada(self):
+        seleccion = self.listaVisual.curselection()
+
+        if seleccion:
+
+            indice = seleccion[0]
+            nodoTemporal = self.listaTareas.primerNodo
+            contador = 0
+
+            while nodoTemporal:
+                if contador == indice:
+                    nodoTemporal.completado = True
                     break
 
                 nodoTemporal = nodoTemporal.siguiente
